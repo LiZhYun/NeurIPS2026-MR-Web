@@ -14,7 +14,7 @@
       content="A structural account of why action-level success does not identify source-preserving cross-skeleton motion transfer."
     >
     <meta property="og:type" content="website">
-    <meta property="og:image" content="assets/figures/main_fig1_concept.png">
+    <meta property="og:image" content="assets/figures/paper_rendered/figure1_teaser.png">
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="assets/css/site.css">
   </head>
@@ -24,306 +24,293 @@
         <a class="brand" href="#top">Cross-Skeleton Retargeting</a>
         <div class="nav-links">
           <a href="#abstract">Abstract</a>
+          <a href="#mechanisms">Mechanisms</a>
           <a href="#evidence">Evidence</a>
           <a href="#videos">Videos</a>
-          <a href="#citation">Citation</a>
+          <a href="#citation">BibTeX</a>
         </div>
       </nav>
     </header>
 
     <main id="top">
-      <section class="hero section">
+      <section class="hero">
         <div class="container hero-inner">
           <p class="venue">NeurIPS 2026 submission</p>
           <h1>
-            <span class="title-line">Why Cross-Skeleton</span>
-            <span class="title-line">Retargeting Is</span>
-            <span class="title-line">Non-Identifiable</span>
+            <span>Why Cross-Skeleton</span>
+            <span>Retargeting Is</span>
+            <span>Non-Identifiable</span>
           </h1>
           <p class="subtitle">Structural Limits of Generative Motion Models</p>
           <p class="authors">Anonymous authors</p>
           <div class="button-row" aria-label="Project links">
-            <a class="button primary" href="assets/paper/neurips_2026.pdf">Paper PDF</a>
+            <a class="button primary" href="assets/paper/neurips_2026.pdf">Paper</a>
             <a class="button" href="https://anonymous.4open.science/r/NeurIPS2026-MR-4884/">Code</a>
             <a class="button" href="#videos">Videos</a>
             <a class="button" href="#citation">BibTeX</a>
           </div>
-          <p class="thesis">
-            Action-consistent target motion can be produced by source-preserving
-            transfer or by target-action recovery. Standard objectives and
-            scores cannot distinguish these maps.
+        </div>
+
+        <div class="container hero-media-shell">
+          <video
+            class="hero-video"
+            controls
+            muted
+            playsinline
+            preload="metadata"
+            poster="assets/videos/main_panorama_midframe.png"
+          >
+            <source src="assets/videos/main_panorama.mp4" type="video/mp4">
+          </video>
+          <p class="hero-caption">
+            Action-consistent target motion can arise from source-preserving
+            transfer or from target-action recovery. The standard score sees
+            the action, but not the map that produced it.
           </p>
         </div>
       </section>
 
-      <section class="section teaser-section" aria-labelledby="teaser-title">
-        <div class="container">
-          <h2 id="teaser-title">Same Score, Different Maps</h2>
-          <figure class="figure-frame wide">
-            <img
-              src="assets/figures/main_fig1_concept.png"
-              alt="Concept figure showing that the same action-level score can accept both a source-preserving map and a target-action habit."
-            >
-            <figcaption>
-              Standard action-level evidence accepts both source-preserving
-              transfer and target-action recovery. The missing axis is whether
-              source-instance geometry remains visible after retargeting.
-            </figcaption>
-          </figure>
+      <section class="section" id="abstract" aria-labelledby="abstract-title">
+        <div class="container narrow">
+          <h2 id="abstract-title">Abstract</h2>
+          <p>
+            Cross-skeleton motion generation trains generative models to carry
+            action structure and source-specific dynamics from one body to
+            another. A key challenge is understanding the mechanisms that
+            govern these mappings, because action-consistent outputs are
+            observationally equivalent, arising either from genuine
+            source-preserving transfer or from degenerate target-action label
+            recovery.
+          </p>
+          <p>
+            Through theoretical analysis and empirical evaluation, we show that
+            the widespread failure to preserve source-specific motion is not a
+            matter of model capacity, but a structural limit of standard
+            generative objectives. Unpaired training admits a gauge ambiguity in
+            the latent space, while sparse paired training degenerates toward a
+            target-action prototype.
+          </p>
+          <p>
+            To audit these mechanisms, we introduce Source-Instance Fidelity, a
+            diagnostic that asks whether source-instance geometry remains
+            visible in target outputs after the target skeleton and action are
+            fixed. The resulting evidence separates action-level success from
+            true source-preserving transfer.
+          </p>
         </div>
       </section>
 
-      <section class="section split-section" id="abstract" aria-labelledby="abstract-title">
-        <div class="container two-column">
-          <div>
-            <h2 id="abstract-title">Abstract</h2>
-            <p>
-              Cross-skeleton motion generation trains generative models to carry
-              action structure and motion intention from one body to another.
-              Yet an action-consistent target motion admits two observationally
-              compatible explanations: source-preserving transfer and
-              target-action recovery.
-            </p>
-            <p>
-              We show that this ambiguity is structural rather than incidental:
-              under standard generative objectives, the source-conditioned
-              retargeting map is non-identifiable in sparse heterogeneous
-              motion domains. Unpaired marginal matching yields gauge
-              non-identifiability, while sparse paired supervision admits
-              conditional-mean degeneration toward target-action prototypes.
-            </p>
-            <p>
-              To make the missing evidence observable, we introduce
-              Source-Instance Fidelity, a diagnostic that tests whether the
-              source-side geometry remains visible in generated target motions
-              after the target skeleton and action are fixed.
-            </p>
+      <section class="section figure-section" aria-labelledby="main-idea-title">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Main idea</p>
+            <h2 id="main-idea-title">Same score, different maps</h2>
           </div>
-          <aside class="key-points" aria-label="Paper summary">
-            <h3>Core Message</h3>
-            <p>
-              High action-level retrieval can be compatible with a map that is
-              blind to the source instance.
-            </p>
-            <h3>Diagnostic</h3>
-            <p>
-              Source-Instance Fidelity asks whether changing the source clip
-              changes the target motion in the corresponding way.
-            </p>
-            <h3>Evidence</h3>
-            <p>
-              Figures and videos below separate action recovery from
-              source-preserving transfer across heterogeneous animal motion.
-            </p>
-          </aside>
+          <figure class="media-figure full scroll-figure">
+            <img
+              src="assets/figures/paper_rendered/figure1_teaser.png"
+              alt="Conceptual figure showing source-preserving transfer and target-action recovery as two maps accepted by action-level scoring."
+            >
+            <figcaption>
+              A target motion that expresses the requested action can be
+              produced by a source-preserving map or by a target-action habit.
+              Source-Instance Fidelity supplies the missing axis: whether the
+              source clip still determines the output within a fixed target
+              skeleton and action.
+            </figcaption>
+          </figure>
         </div>
       </section>
 
       <section class="section" id="mechanisms" aria-labelledby="mechanisms-title">
         <div class="container">
-          <h2 id="mechanisms-title">Two Structural Mechanisms</h2>
-          <div class="mechanism-grid">
-            <article class="mechanism-card">
-              <span class="card-index">01</span>
-              <h3>Gauge Non-Identifiability</h3>
+          <div class="section-heading">
+            <p class="eyebrow">Theory</p>
+            <h2 id="mechanisms-title">Two mechanisms make the map non-identifiable</h2>
+          </div>
+          <div class="mechanism-strip">
+            <article>
+              <span>01</span>
+              <h3>Gauge non-identifiability</h3>
               <p>
                 Unpaired marginal matching leaves a relative gauge between
-                skeleton-specific latent spaces, so different source-conditioned
-                maps can induce the same training evidence.
+                skeleton-specific latent spaces, allowing distinct
+                source-conditioned maps to induce the same training evidence.
               </p>
             </article>
-            <article class="mechanism-card">
-              <span class="card-index">02</span>
-              <h3>Conditional-Mean Degeneration</h3>
+            <article>
+              <span>02</span>
+              <h3>Conditional-mean degeneration</h3>
               <p>
-                With random target-cell pairing, squared-error supervision can
-                collapse toward an action-conditioned target prototype instead
-                of preserving the motion intention of the source clip.
+                Cell-paired squared-error regression under random target-cell
+                pairing recovers a target-action prototype rather than the
+                motion intention of the source clip.
               </p>
             </article>
           </div>
-          <figure class="figure-frame">
+          <figure class="media-figure full scroll-figure">
             <img
-              src="assets/figures/main_propcm_ladder.png"
-              alt="Conditional-mean degeneration plot showing how sparse pairing supports prototype behavior."
+              src="assets/figures/paper_rendered/figure2_prototype.png"
+              alt="Figure showing conditional-mean degeneration toward a target-action prototype."
             >
             <figcaption>
-              Conditional-mean degeneration is not a capacity failure. It is a
-              consequence of the evidence made available by sparse pairings.
+              Sparse pairings provide enough evidence to recover a target
+              action, but not enough to identify the source-conditioned map.
             </figcaption>
           </figure>
         </div>
       </section>
 
-      <section class="section evidence-section" id="evidence" aria-labelledby="evidence-title">
+      <section class="section figure-section" id="evidence" aria-labelledby="evidence-title">
         <div class="container">
-          <h2 id="evidence-title">Source-Instance Fidelity</h2>
+          <div class="section-heading">
+            <p class="eyebrow">Evidence</p>
+            <h2 id="evidence-title">Action recovery and source-instance transfer separate</h2>
+          </div>
           <p class="section-lede">
-            Source-Instance Fidelity measures whether source-side differences
-            are reflected in target-side outputs once action and target skeleton
-            are fixed. This diagnostic exposes when a model has recovered the
-            action without identifying the retargeting map.
+            Source-Instance Fidelity measures whether changing the source clip
+            produces a corresponding change in the generated target motion once
+            the target skeleton and action are fixed.
           </p>
-          <div class="evidence-grid">
-            <figure class="figure-frame">
+          <div class="figure-grid two">
+            <figure class="media-figure scroll-figure result-figure">
               <img
                 src="assets/figures/main_sif_max_support.png"
                 alt="Source-Instance Fidelity results showing many methods near the source-blind floor."
               >
               <figcaption>
-                Many evaluated methods remain near the source-blind floor under
-                Source-Instance Fidelity, despite action-level success.
+                Most evaluated systems remain near the source-blind floor under
+                Source-Instance Fidelity.
               </figcaption>
             </figure>
-            <figure class="figure-frame">
+            <figure class="media-figure scroll-figure result-figure">
               <img
                 src="assets/figures/main_label_only_audit.png"
-                alt="Label-only audit showing that action recovery can be high without source-instance transfer."
+                alt="Label-only audit showing positive action-level AUC for label-only controls."
               >
               <figcaption>
-                Label-only controls reveal why action-level evidence alone does
-                not establish a source-preserving map.
+                Label-only controls show why action-level AUC can be positive
+                without certifying a source-preserving map.
               </figcaption>
-            </figure>
-          </div>
-          <div class="small-figure-row">
-            <figure class="figure-frame compact">
-              <img
-                src="assets/figures/app_ace_ablation.png"
-                alt="Ablation figure showing the role of auxiliary motion-space evidence."
-              >
-              <figcaption>ACE ablation localizes source-instance evidence.</figcaption>
-            </figure>
-            <figure class="figure-frame compact">
-              <img
-                src="assets/figures/app_p3_vs_sif_decoupling.png"
-                alt="Decoupling figure comparing action-level behavior and Source-Instance Fidelity."
-              >
-              <figcaption>Action-level evidence and SIF can decouple.</figcaption>
             </figure>
           </div>
         </div>
       </section>
 
-      <section class="section video-section" id="videos" aria-labelledby="videos-title">
+      <section class="section" id="videos" aria-labelledby="videos-title">
         <div class="container">
-          <h2 id="videos-title">Qualitative Evidence</h2>
-          <p class="section-lede">
-            The videos show the same diagnostic tension visually: generated
-            target motions can satisfy the requested action while losing the
-            source-specific motion intention that a retargeting claim requires.
-          </p>
-          <div class="featured-videos">
-            <article class="video-card large">
-              <video
-                controls
-                playsinline
-                preload="metadata"
-                poster="assets/videos/main_panorama_midframe.png"
-              >
+          <div class="section-heading">
+            <p class="eyebrow">Qualitative results</p>
+            <h2 id="videos-title">Motion examples make the ambiguity visible</h2>
+          </div>
+          <div class="video-stack">
+            <article class="video-panel">
+              <video controls playsinline preload="metadata" poster="assets/videos/main_panorama_midframe.png">
                 <source src="assets/videos/main_panorama.mp4" type="video/mp4">
               </video>
-              <h3>Method Panorama</h3>
-              <p>
-                Side-by-side outputs across evaluated methods on representative
-                cross-skeleton queries.
-              </p>
+              <div>
+                <h3>Method panorama</h3>
+                <p>
+                  Side-by-side method outputs on representative cross-skeleton
+                  queries show that standard action-level success does not
+                  determine which source-conditioned map was learned.
+                </p>
+              </div>
             </article>
-            <article class="video-card large">
-              <video
-                controls
-                playsinline
-                preload="metadata"
-                poster="assets/videos/main_failuremodes_midframe.png"
-              >
+            <article class="video-panel">
+              <video controls playsinline preload="metadata" poster="assets/videos/main_failuremodes_midframe.png">
                 <source src="assets/videos/main_failuremodes.mp4" type="video/mp4">
               </video>
-              <h3>Failure Modes</h3>
-              <p>
-                Examples where action-consistent target motion does not preserve
-                the source clip's motion intention.
-              </p>
+              <div>
+                <h3>Failure modes</h3>
+                <p>
+                  These examples isolate outputs that satisfy the action request
+                  while losing the source clip's motion intention.
+                </p>
+              </div>
             </article>
           </div>
+        </div>
+      </section>
 
-          <h3 class="subsection-title">Supplementary Motion Triples</h3>
+      <section class="section figure-section" aria-labelledby="extra-title">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Diagnostics</p>
+            <h2 id="extra-title">Additional controls</h2>
+          </div>
+          <div class="figure-grid three">
+            <figure class="media-figure">
+              <img src="assets/figures/app_ace_ablation.png" alt="ACE ablation figure.">
+              <figcaption>ACE ablation localizes the source-instance evidence.</figcaption>
+            </figure>
+            <figure class="media-figure">
+              <img src="assets/figures/app_synth_2x2_ladder.png" alt="Synthetic 2 by 2 calibration figure.">
+              <figcaption>Synthetic calibration verifies the diagnostic in a setting with known correspondences.</figcaption>
+            </figure>
+            <figure class="media-figure">
+              <img src="assets/figures/app_p3_vs_sif_decoupling.png" alt="P3 versus SIF decoupling figure.">
+              <figcaption>Action-level behavior and Source-Instance Fidelity can decouple.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="supp-videos-title">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Supplementary videos</p>
+            <h2 id="supp-videos-title">Representative source-target triples</h2>
+          </div>
           <div class="video-grid">
             <article class="video-card">
               <video controls playsinline preload="metadata" poster="assets/videos/app_triple_1_spiderg_tricera_attack_midframe.png">
                 <source src="assets/videos/app_triple_1_spiderg_tricera_attack.mp4" type="video/mp4">
               </video>
-              <h4>Spiderg to Tricera, Attack</h4>
+              <h3>Spiderg to Tricera, Attack</h3>
             </article>
             <article class="video-card">
               <video controls playsinline preload="metadata" poster="assets/videos/app_triple_2_sandmouse_ostrich_idle_midframe.png">
                 <source src="assets/videos/app_triple_2_sandmouse_ostrich_idle.mp4" type="video/mp4">
               </video>
-              <h4>Sandmouse to Ostrich, Idle</h4>
+              <h3>Sandmouse to Ostrich, Idle</h3>
             </article>
             <article class="video-card">
               <video controls playsinline preload="metadata" poster="assets/videos/app_triple_3_dragon_giantbee_idle_midframe.png">
                 <source src="assets/videos/app_triple_3_dragon_giantbee_idle.mp4" type="video/mp4">
               </video>
-              <h4>Dragon to Giantbee, Idle</h4>
+              <h3>Dragon to Giantbee, Idle</h3>
             </article>
             <article class="video-card">
               <video controls playsinline preload="metadata" poster="assets/videos/app_triple_4_horse_ant_idle_midframe.png">
                 <source src="assets/videos/app_triple_4_horse_ant_idle.mp4" type="video/mp4">
               </video>
-              <h4>Horse to Ant, Idle</h4>
+              <h3>Horse to Ant, Idle</h3>
             </article>
             <article class="video-card">
               <video controls playsinline preload="metadata" poster="assets/videos/app_triple_5_coyote_ostrich_attack_midframe.png">
                 <source src="assets/videos/app_triple_5_coyote_ostrich_attack.mp4" type="video/mp4">
               </video>
-              <h4>Coyote to Ostrich, Attack</h4>
+              <h3>Coyote to Ostrich, Attack</h3>
             </article>
             <article class="video-card">
               <video controls playsinline preload="metadata" poster="assets/videos/app_triple_6_rhino_spiderg_attack_midframe.png">
                 <source src="assets/videos/app_triple_6_rhino_spiderg_attack.mp4" type="video/mp4">
               </video>
-              <h4>Rhino to Spiderg, Attack</h4>
+              <h3>Rhino to Spiderg, Attack</h3>
             </article>
-            <article class="video-card">
-              <video controls playsinline preload="metadata" poster="assets/videos/app_triple_7_hippo_lion_attack_midframe.png">
-                <source src="assets/videos/app_triple_7_hippo_lion_attack.mp4" type="video/mp4">
-              </video>
-              <h4>Hippo to Lion, Attack</h4>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section figures-section" aria-labelledby="figures-title">
-        <div class="container">
-          <h2 id="figures-title">Additional Diagnostics</h2>
-          <div class="small-figure-row">
-            <figure class="figure-frame compact">
-              <img
-                src="assets/figures/app_synth_2x2_ladder.png"
-                alt="Synthetic 2 by 2 calibration figure for Source-Instance Fidelity."
-              >
-              <figcaption>Synthetic calibration with known correspondences.</figcaption>
-            </figure>
-            <figure class="figure-frame compact">
-              <img
-                src="assets/figures/app_clustered_ci_robustness.png"
-                alt="Clustered confidence interval robustness figure for Source-Instance Fidelity."
-              >
-              <figcaption>Robustness under clustered confidence intervals.</figcaption>
-            </figure>
           </div>
         </div>
       </section>
 
       <section class="section citation-section" id="citation" aria-labelledby="citation-title">
-        <div class="container two-column citation-layout">
+        <div class="container citation-layout">
           <div>
-            <h2 id="citation-title">Citation</h2>
+            <p class="eyebrow">Citation</p>
+            <h2 id="citation-title">BibTeX</h2>
             <p>
-              This page is prepared for anonymous review. The citation entry
-              will be updated with author and venue metadata after the review
-              process.
+              This project page is prepared for anonymous review. Author and
+              venue metadata will be updated after the review process.
             </p>
           </div>
           <pre class="bibtex"><code>@inproceedings{anonymous2026crossskeleton,
@@ -339,10 +326,7 @@
 
     <footer class="footer">
       <div class="container footer-inner">
-        <p>
-          Static project page inspired by the academic layout of
-          <a href="https://nerfies.github.io/">Nerfies</a>.
-        </p>
+        <p>Project page for anonymous review.</p>
         <p>
           <a href="assets/paper/neurips_2026.pdf">Paper</a>
           <span aria-hidden="true">/</span>

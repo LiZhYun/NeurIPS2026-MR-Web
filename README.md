@@ -1,6 +1,7 @@
 # Cross-Skeleton Retargeting Project Page
 
-Static Netlify-ready project page for:
+Static Netlify-ready project page, styled after the academic media layout of
+the AnyTop project page, for:
 
 **Why Cross-Skeleton Retargeting Is Non-Identifiable: Structural Limits of Generative Motion Models**
 
@@ -17,6 +18,7 @@ Use Netlify with:
 - `assets/css/site.css`: responsive page styling
 - `assets/js/site.js`: lightweight video behavior
 - `assets/figures/`: selected public paper figures
+- `assets/figures/paper_rendered/`: web crops of the LaTeX-rendered main figures
 - `assets/videos/`: selected qualitative and supplementary videos
 - `assets/paper/neurips_2026.pdf`: paper PDF
 
