@@ -1,340 +1,113 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Why Cross-Skeleton Retargeting Is Non-Identifiable</title>
-    <meta
-      name="description"
-      content="Project page for Why Cross-Skeleton Retargeting Is Non-Identifiable: Structural Limits of Generative Motion Models."
-    >
-    <meta property="og:title" content="Why Cross-Skeleton Retargeting Is Non-Identifiable">
-    <meta
-      property="og:description"
-      content="A structural account of why action-level success does not identify source-preserving cross-skeleton motion transfer."
-    >
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="assets/figures/paper_rendered/figure1_teaser.png">
-    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="assets/css/site.css">
-  </head>
-  <body>
-    <header class="site-header">
-      <nav class="nav-shell" aria-label="Project navigation">
-        <a class="brand" href="#top">Cross-Skeleton Retargeting</a>
-        <div class="nav-links">
-          <a href="#abstract">Abstract</a>
-          <a href="#mechanisms">Mechanisms</a>
-          <a href="#evidence">Evidence</a>
-          <a href="#videos">Videos</a>
-          <a href="#citation">BibTeX</a>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cross-Skeleton Retargeting · NeurIPS 2026</title>
+  <meta name="description" content="A model can show the right action without carrying over the source motion. With sparse data, standard training and standard scores cannot tell. SIF can.">
+  <meta property="og:title" content="Cross-Skeleton Retargeting · NeurIPS 2026">
+  <meta property="og:description" content="A model can show the right action without carrying over the source motion. With sparse data, standard training and standard scores cannot tell. SIF can.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+  <nav class="topbar" id="topbar" aria-label="Page">
+    <div class="topbar-inner">
+      <a class="topbar-title" href="#top">Cross-Skeleton Retargeting</a>
+      <div class="topbar-links">
+        <a class="pill pill-small pill-primary" href="assets/paper/neurips_2026.pdf">Paper</a>
+        <a class="pill pill-small pill-secondary" href="https://github.com/LiZhYun/NeurIPS2026-Cross-Skeleton-Retargeting">Code</a>
+      </div>
+    </div>
+    <div class="topbar-progress" id="topbar-progress" aria-hidden="true"></div>
+  </nav>
+
+  <main>
+    <header class="masthead" id="top">
+      <div class="wrap">
+        <p class="venue">NeurIPS 2026</p>
+        <h1 class="title">Why <span class="nowrap">Cross-Skeleton</span> Retargeting Is <span class="nowrap">Non-Identifiable:</span> <span class="title-rest">Structural Limits of Generative Motion Models</span></h1>
+        <p class="authors">
+          <a href="https://lizhyun.github.io/">Zhiyuan Li</a><sup>1</sup>,
+          <a href="https://uenian33.github.io/">Wenyan Yang</a><sup>1</sup>,
+          <a href="https://users.ics.aalto.fi/~pemartti/">Pekka Marttinen</a><sup>2</sup>,
+          <a href="https://rl.aalto.fi/team/">Joni Pajarinen</a><sup>1</sup>
+        </p>
+        <p class="affiliation">Aalto University, Finland</p>
+        <p class="departments"><span><sup>1</sup> Department of Electrical Engineering and Automation</span> <span class="dot" aria-hidden="true">·</span> <span><sup>2</sup> Department of Computer Science</span></p>
+        <div class="buttons">
+          <a class="pill pill-primary" href="assets/paper/neurips_2026.pdf">Paper</a>
+          <a class="pill pill-secondary" href="https://openreview.net/forum?id=4KPh2cXttv">OpenReview</a>
+          <a class="pill pill-secondary" href="https://github.com/LiZhYun/NeurIPS2026-Cross-Skeleton-Retargeting">Code</a>
+          <a class="pill pill-secondary" href="#cite">BibTeX</a>
         </div>
-      </nav>
+      </div>
     </header>
 
-    <main id="top">
-      <section class="hero">
-        <div class="container hero-inner">
-          <p class="venue">NeurIPS 2026 submission</p>
-          <h1>
-            <span>Why Cross-Skeleton</span>
-            <span>Retargeting Is</span>
-            <span>Non-Identifiable</span>
-          </h1>
-          <p class="subtitle">Structural Limits of Generative Motion Models</p>
-          <p class="authors">Anonymous authors</p>
-          <div class="button-row" aria-label="Project links">
-            <a class="button primary" href="assets/paper/neurips_2026.pdf">Paper</a>
-            <a class="button" href="https://anonymous.4open.science/r/NeurIPS2026-MR-4884/">Code</a>
-            <a class="button" href="#videos">Videos</a>
-            <a class="button" href="#citation">BibTeX</a>
-          </div>
-        </div>
+    <section class="hero" id="hero">
+      <div class="hero-wrap">
+        <svg class="hero-svg" id="hero-svg" viewBox="0 0 1152 724" role="img"
+             aria-label="Animation. A four-legged stick creature walks in three styles: a bouncy trot, a low creep and a long bounding stride. Model A turns each one into a two-legged walk that keeps its style. Model B turns all three into the same average walk. Both models get the same score for showing the right action, but only Model A follows the source."></svg>
+        <p class="hero-line" id="hero-line">The usual score can't tell these apart. <span class="accent-text">SIF can.</span></p>
+      </div>
+    </section>
 
-        <div class="container hero-media-shell">
-          <video
-            class="hero-video"
-            controls
-            muted
-            playsinline
-            preload="metadata"
-            poster="assets/videos/main_panorama_midframe.png"
-          >
-            <source src="assets/videos/main_panorama.mp4" type="video/mp4">
-          </video>
-          <p class="hero-caption">
-            Action-consistent target motion can arise from source-preserving
-            transfer or from target-action recovery. The standard score sees
-            the action, but not the map that produced it.
-          </p>
-        </div>
-      </section>
+    <section class="band band-alt" id="in-short">
+      <div class="wrap wrap-text">
+        <h2 class="eyebrow">In short</h2>
+        <p class="lead">Retargeting carries a motion from one body to another. A model can show the right action on the new body without carrying over anything from the clip it was given. We show that when data are sparse and the bodies differ, the standard ways of training cannot tell these two cases apart, and neither can the usual action-level score. Our measure, SIF, can. On animal motion, nine of the fourteen methods we tested score at or near the level of a method that ignores its source.</p>
+        <details class="fold">
+          <summary>Read the abstract</summary>
+          <p class="fold-body">Cross-skeleton motion generation trains generative models to carry action structure and motion intention from one body to another. Yet a target motion that shows the right action has two explanations that the training data cannot tell apart: the model transferred the source clip, or it recovered a typical motion for the requested action. We show that this ambiguity is structural rather than incidental: under standard generative objectives, the source-conditioned retargeting map is non-identifiable in sparse heterogeneous motion domains. Unpaired distribution matching yields <em>gauge non-identifiability</em>: the latent spaces of different skeletons can be transformed relative to one another without changing the training evidence, so different source-conditioned maps fit it equally well. Sparse paired supervision admits the complementary failure mode, <em>conditional-mean degeneration</em>: when clips are paired only by action, squared-error training converges to an average target motion that ignores the source clip. To make the missing evidence observable, we introduce <em>Source-Instance Fidelity</em> (SIF), a diagnostic that tests whether outputs differ from one another the way their source clips do, with the target skeleton and action held fixed. Under this diagnostic, methods that succeed at the standard action-level test on animal motion data often sit at the <em>source-blind floor</em>, while the methods that rise above it retain only a partial relational signal. Retargeting therefore needs objectives and evaluations that can identify the source-conditioned map it claims to learn. Project page: <a href="https://keen-semolina-09811d.netlify.app/">https://keen-semolina-09811d.netlify.app/</a>.</p>
+        </details>
+      </div>
+    </section>
 
-      <section class="section" id="abstract" aria-labelledby="abstract-title">
-        <div class="container narrow">
-          <h2 id="abstract-title">Abstract</h2>
-          <p>
-            Cross-skeleton motion generation trains generative models to carry
-            action structure and source-specific dynamics from one body to
-            another. A key challenge is understanding the mechanisms that
-            govern these mappings, because action-consistent outputs are
-            observationally equivalent, arising either from genuine
-            source-preserving transfer or from degenerate target-action label
-            recovery.
-          </p>
-          <p>
-            Through theoretical analysis and empirical evaluation, we show that
-            the widespread failure to preserve source-specific motion is not a
-            matter of model capacity, but a structural limit of standard
-            generative objectives. Unpaired training admits a gauge ambiguity in
-            the latent space, while sparse paired training degenerates toward a
-            target-action prototype.
-          </p>
-          <p>
-            To audit these mechanisms, we introduce Source-Instance Fidelity, a
-            diagnostic that asks whether source-instance geometry remains
-            visible in target outputs after the target skeleton and action are
-            fixed. The resulting evidence separates action-level success from
-            true source-preserving transfer.
-          </p>
-        </div>
-      </section>
+    <!-- PREVIEW ONLY: placeholder note. Remove this section when the rest of the page is built. -->
+    <section class="band" id="next">
+      <div class="wrap wrap-text">
+        <p class="muted-note">The rest of the page is coming in the next preview.</p>
+      </div>
+    </section>
 
-      <section class="section figure-section" aria-labelledby="main-idea-title">
-        <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow">Main idea</p>
-            <h2 id="main-idea-title">Same score, different maps</h2>
-          </div>
-          <figure class="media-figure full scroll-figure">
-            <img
-              src="assets/figures/paper_rendered/figure1_teaser.png"
-              alt="Conceptual figure showing source-preserving transfer and target-action recovery as two maps accepted by action-level scoring."
-            >
-            <figcaption>
-              A target motion that expresses the requested action can be
-              produced by a source-preserving map or by a target-action habit.
-              Source-Instance Fidelity supplies the missing axis: whether the
-              source clip still determines the output within a fixed target
-              skeleton and action.
-            </figcaption>
-          </figure>
-        </div>
-      </section>
-
-      <section class="section" id="mechanisms" aria-labelledby="mechanisms-title">
-        <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow">Theory</p>
-            <h2 id="mechanisms-title">Two mechanisms make the map non-identifiable</h2>
-          </div>
-          <div class="mechanism-strip">
-            <article>
-              <span>01</span>
-              <h3>Gauge non-identifiability</h3>
-              <p>
-                Unpaired marginal matching leaves a relative gauge between
-                skeleton-specific latent spaces, allowing distinct
-                source-conditioned maps to induce the same training evidence.
-              </p>
-            </article>
-            <article>
-              <span>02</span>
-              <h3>Conditional-mean degeneration</h3>
-              <p>
-                Cell-paired squared-error regression under random target-cell
-                pairing recovers a target-action prototype rather than the
-                motion intention of the source clip.
-              </p>
-            </article>
-          </div>
-          <figure class="media-figure full scroll-figure">
-            <img
-              src="assets/figures/paper_rendered/figure2_prototype.png"
-              alt="Figure showing conditional-mean degeneration toward a target-action prototype."
-            >
-            <figcaption>
-              Sparse pairings provide enough evidence to recover a target
-              action, but not enough to identify the source-conditioned map.
-            </figcaption>
-          </figure>
-        </div>
-      </section>
-
-      <section class="section figure-section" id="evidence" aria-labelledby="evidence-title">
-        <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow">Evidence</p>
-            <h2 id="evidence-title">Action recovery and source-instance transfer separate</h2>
-          </div>
-          <p class="section-lede">
-            Source-Instance Fidelity measures whether changing the source clip
-            produces a corresponding change in the generated target motion once
-            the target skeleton and action are fixed.
-          </p>
-          <div class="figure-grid two">
-            <figure class="media-figure scroll-figure result-figure">
-              <img
-                src="assets/figures/main_sif_max_support.png"
-                alt="Source-Instance Fidelity results showing many methods near the source-blind floor."
-              >
-              <figcaption>
-                Most evaluated systems remain near the source-blind floor under
-                Source-Instance Fidelity.
-              </figcaption>
-            </figure>
-            <figure class="media-figure scroll-figure result-figure">
-              <img
-                src="assets/figures/main_label_only_audit.png"
-                alt="Label-only audit showing positive action-level AUC for label-only controls."
-              >
-              <figcaption>
-                Label-only controls show why action-level AUC can be positive
-                without certifying a source-preserving map.
-              </figcaption>
-            </figure>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="videos" aria-labelledby="videos-title">
-        <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow">Qualitative results</p>
-            <h2 id="videos-title">Motion examples make the ambiguity visible</h2>
-          </div>
-          <div class="video-stack">
-            <article class="video-panel">
-              <video controls playsinline preload="metadata" poster="assets/videos/main_panorama_midframe.png">
-                <source src="assets/videos/main_panorama.mp4" type="video/mp4">
-              </video>
-              <div>
-                <h3>Method panorama</h3>
-                <p>
-                  Side-by-side method outputs on representative cross-skeleton
-                  queries show that standard action-level success does not
-                  determine which source-conditioned map was learned.
-                </p>
-              </div>
-            </article>
-            <article class="video-panel">
-              <video controls playsinline preload="metadata" poster="assets/videos/main_failuremodes_midframe.png">
-                <source src="assets/videos/main_failuremodes.mp4" type="video/mp4">
-              </video>
-              <div>
-                <h3>Failure modes</h3>
-                <p>
-                  These examples isolate outputs that satisfy the action request
-                  while losing the source clip's motion intention.
-                </p>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section figure-section" aria-labelledby="extra-title">
-        <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow">Diagnostics</p>
-            <h2 id="extra-title">Additional controls</h2>
-          </div>
-          <div class="figure-grid three">
-            <figure class="media-figure">
-              <img src="assets/figures/app_ace_ablation.png" alt="ACE ablation figure.">
-              <figcaption>ACE ablation localizes the source-instance evidence.</figcaption>
-            </figure>
-            <figure class="media-figure">
-              <img src="assets/figures/app_synth_2x2_ladder.png" alt="Synthetic 2 by 2 calibration figure.">
-              <figcaption>Synthetic calibration verifies the diagnostic in a setting with known correspondences.</figcaption>
-            </figure>
-            <figure class="media-figure">
-              <img src="assets/figures/app_p3_vs_sif_decoupling.png" alt="P3 versus SIF decoupling figure.">
-              <figcaption>Action-level behavior and Source-Instance Fidelity can decouple.</figcaption>
-            </figure>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" aria-labelledby="supp-videos-title">
-        <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow">Supplementary videos</p>
-            <h2 id="supp-videos-title">Representative source-target triples</h2>
-          </div>
-          <div class="video-grid">
-            <article class="video-card">
-              <video controls playsinline preload="metadata" poster="assets/videos/app_triple_1_spiderg_tricera_attack_midframe.png">
-                <source src="assets/videos/app_triple_1_spiderg_tricera_attack.mp4" type="video/mp4">
-              </video>
-              <h3>Spiderg to Tricera, Attack</h3>
-            </article>
-            <article class="video-card">
-              <video controls playsinline preload="metadata" poster="assets/videos/app_triple_2_sandmouse_ostrich_idle_midframe.png">
-                <source src="assets/videos/app_triple_2_sandmouse_ostrich_idle.mp4" type="video/mp4">
-              </video>
-              <h3>Sandmouse to Ostrich, Idle</h3>
-            </article>
-            <article class="video-card">
-              <video controls playsinline preload="metadata" poster="assets/videos/app_triple_3_dragon_giantbee_idle_midframe.png">
-                <source src="assets/videos/app_triple_3_dragon_giantbee_idle.mp4" type="video/mp4">
-              </video>
-              <h3>Dragon to Giantbee, Idle</h3>
-            </article>
-            <article class="video-card">
-              <video controls playsinline preload="metadata" poster="assets/videos/app_triple_4_horse_ant_idle_midframe.png">
-                <source src="assets/videos/app_triple_4_horse_ant_idle.mp4" type="video/mp4">
-              </video>
-              <h3>Horse to Ant, Idle</h3>
-            </article>
-            <article class="video-card">
-              <video controls playsinline preload="metadata" poster="assets/videos/app_triple_5_coyote_ostrich_attack_midframe.png">
-                <source src="assets/videos/app_triple_5_coyote_ostrich_attack.mp4" type="video/mp4">
-              </video>
-              <h3>Coyote to Ostrich, Attack</h3>
-            </article>
-            <article class="video-card">
-              <video controls playsinline preload="metadata" poster="assets/videos/app_triple_6_rhino_spiderg_attack_midframe.png">
-                <source src="assets/videos/app_triple_6_rhino_spiderg_attack.mp4" type="video/mp4">
-              </video>
-              <h3>Rhino to Spiderg, Attack</h3>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section citation-section" id="citation" aria-labelledby="citation-title">
-        <div class="container citation-layout">
-          <div>
-            <p class="eyebrow">Citation</p>
-            <h2 id="citation-title">BibTeX</h2>
-            <p>
-              This project page is prepared for anonymous review. Author and
-              venue metadata will be updated after the review process.
-            </p>
-          </div>
-          <pre class="bibtex"><code>@inproceedings{anonymous2026crossskeleton,
-  title = {Why Cross-Skeleton Retargeting Is Non-Identifiable:
-           Structural Limits of Generative Motion Models},
-  author = {Anonymous Authors},
-  booktitle = {Submitted to NeurIPS},
-  year = {2026}
+    <section class="band band-alt" id="cite">
+      <div class="wrap wrap-text">
+        <h2 class="section-title">How do I cite this?</h2>
+        <div class="code-block">
+          <button class="copy-button" type="button" data-copy="bibtex" aria-label="Copy">
+            <span class="copy-label">Copy</span>
+            <svg class="copy-check" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>
+          </button>
+<pre id="bibtex"><code>@inproceedings{li2026retargeting,
+  title     = {Why Cross-Skeleton Retargeting Is Non-Identifiable: Structural Limits of Generative Motion Models},
+  author    = {Li, Zhiyuan and Yang, Wenyan and Marttinen, Pekka and Pajarinen, Joni},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year      = {2026}
 }</code></pre>
         </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <div class="container footer-inner">
-        <p>Project page for anonymous review.</p>
-        <p>
-          <a href="assets/paper/neurips_2026.pdf">Paper</a>
-          <span aria-hidden="true">/</span>
-          <a href="https://anonymous.4open.science/r/NeurIPS2026-MR-4884/">Code</a>
-        </p>
       </div>
-    </footer>
+    </section>
+  </main>
 
-    <script src="assets/js/site.js"></script>
-  </body>
+  <footer class="footer">
+    <div class="wrap wrap-text">
+      <h2 class="footer-head">Data</h2>
+      <ul class="footer-list">
+        <li>Animal motion: Truebones Zoo dataset by Truebones.</li>
+        <li>Human motion: LAFAN1 by Ubisoft La Forge, CC BY-NC-ND 4.0</li>
+        <li>Training data includes Motion Data by Bones Studio (<a href="https://bones.studio/">https://bones.studio/</a>). Use of the underlying dataset is subject to the BONES Motion Capture Dataset License Agreement.</li>
+      </ul>
+      <h2 class="footer-head">Funding</h2>
+      <p>This work was supported by the Research Council of Finland, Flagship program Finnish Center for Artificial Intelligence (FCAI), and the Research Council of Finland (357301, 358246). We acknowledge CSC – IT Center for Science, Finland, for awarding this project access to the LUMI supercomputer, owned by the EuroHPC Joint Undertaking, hosted by CSC (Finland) and the LUMI consortium through CSC. We acknowledge the computational resources provided by the Aalto Science-IT project.</p>
+      <p>Code released under the MIT licence.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/hero.js"></script>
+  <script src="assets/js/site.js"></script>
+  <!-- PREVIEW ONLY: accent colour switcher. Remove this script tag, assets/js/accent-preview.js and the marked block at the end of site.css before going live. -->
+  <script src="assets/js/accent-preview.js"></script>
+</body>
 </html>
