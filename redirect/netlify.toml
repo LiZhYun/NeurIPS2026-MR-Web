@@ -1,5 +1,0 @@
-# The project page moved to cross-skeleton-retargeting.netlify.app. This small site keeps the old
-# address working by forwarding every request there.
-[build]
-  publish = "."
-  command = ""
