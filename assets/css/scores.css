@@ -1,0 +1,378 @@
+/* Chapters 4 (#sif) and 5 (#action-score): the SIF explanation, the fourteen-method chart and the
+   action-level score bars. Loaded after site.css. */
+
+#sif {
+  --above: var(--accent);
+  --near: #7ab4f2;
+  --at: #aeaeb2;
+}
+
+/* ---------- SIF explanation (drawn by scores.js) ---------- */
+
+.sx-stage svg {
+  display: block;
+  width: 100%;
+  font-family: var(--font);
+}
+.sx-label { font-size: 14px; font-weight: 600; fill: var(--text); }
+.sx-head-text { font-size: 14px; font-weight: 600; fill: var(--accent-text); }
+.sx-key { font-size: 13px; font-weight: 500; fill: var(--muted); }
+.sx-meter { font-size: 16px; font-weight: 700; fill: var(--text); letter-spacing: -0.01em; }
+.sx-track { fill: var(--track); }
+.sx-fill { fill: var(--accent); }
+.sx-pair {
+  fill: none;
+  stroke-linecap: round;
+}
+.sx-pair-src { stroke: #86868b; }
+.sx-pair-out { stroke: var(--accent); }
+.sx-pair-key { stroke: #86868b; }
+.sx-arrow {
+  fill: none;
+  stroke: #b9b9bf;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.sx-shadow { fill: #000; opacity: 0.07; }
+/* The figures reuse the hero's stroke classes, a little thinner at this size. */
+.sx-stage .hx-line { stroke-width: 3.2; }
+.sx-stage .hx-thick { stroke-width: 4.2; }
+.sx-stage.is-small .sx-label,
+.sx-stage.is-small .sx-head-text { font-size: 12px; }
+.sx-stage.is-small .sx-key { font-size: 12px; }
+.sx-stage.is-small .sx-meter { font-size: 14px; }
+.sx-stage.is-small .hx-line { stroke-width: 2.8; }
+.sx-stage.is-small .hx-thick { stroke-width: 3.8; }
+/* The creatures are drawn at a smaller scale than the two-legged figures; thicker strokes keep them as bold. */
+.sx-stage .hx-src .hx-line { stroke-width: 4.2; }
+.sx-stage .hx-src .hx-thick { stroke-width: 5.4; }
+.sx-stage.is-small .hx-src .hx-line { stroke-width: 3.4; }
+.sx-stage.is-small .hx-src .hx-thick { stroke-width: 4.6; }
+
+/* ---------- Results chart ---------- */
+
+.sx-results-lead { margin-top: clamp(80px, 10vw, 136px); }
+
+.sx-card {
+  margin: 0;
+  padding: clamp(24px, 3.4vw, 48px) clamp(18px, 3.4vw, 48px) clamp(22px, 3vw, 40px);
+  border-radius: clamp(18px, 2vw, 28px);
+  background: var(--surface);
+}
+.sx-card-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px 28px;
+  margin-bottom: clamp(24px, 3vw, 36px);
+}
+.sx-chart-title,
+.ax-title {
+  margin: 0;
+  font-size: clamp(21px, 1rem + 0.7vw, 28px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.018em;
+}
+.sx-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 500;
+}
+.sx-legend li { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
+.sx-swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--c);
+}
+.sx-above { --c: var(--above); }
+.sx-near { --c: var(--near); }
+.sx-at { --c: var(--at); }
+
+/* The chart is a stack of rows: name on the left, plot on the right. --name-w is the name column. */
+.sx-chart {
+  --name-w: 248px;
+  --gap: 20px;
+  position: relative;
+}
+.sx-plotbg,
+.sx-head {
+  position: absolute;
+  left: calc(var(--name-w) + var(--gap));
+  right: 0;
+}
+.sx-head {
+  top: 0;
+  height: 44px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+.sx-head-floor {
+  position: absolute;
+  left: 4.348%;
+  bottom: 12px;
+  white-space: nowrap;
+}
+.sx-head-top {
+  position: absolute;
+  right: 0;
+  bottom: 12px;
+  color: var(--text);
+  white-space: nowrap;
+}
+.sx-plotbg {
+  top: 44px;
+  bottom: 30px;
+}
+.sx-band {
+  position: absolute;
+  top: -44px;
+  bottom: 0;
+  left: 4.348%;
+  width: 17.391%;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.045);
+}
+.sx-zero {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 13.043%;
+  width: 1px;
+  background: #c7c7cc;
+}
+.sx-one {
+  position: absolute;
+  top: -8px;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  border-right: 1.5px dashed #86868b;
+}
+.sx-rows {
+  position: relative;
+  padding-top: 44px;
+}
+.sx-row {
+  display: grid;
+  grid-template-columns: var(--name-w) minmax(0, 1fr);
+  column-gap: var(--gap);
+  align-items: center;
+  width: 100%;
+  min-height: 36px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.sx-row:focus-visible { outline-offset: 1px; }
+.sx-name {
+  padding: 6px 0;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: right;
+  transition: color 0.2s ease;
+}
+.sx-rows:hover .sx-row .sx-name,
+.sx-rows.has-active .sx-row .sx-name { color: var(--muted); }
+.sx-rows .sx-row:hover .sx-name,
+.sx-rows .sx-row.is-active .sx-name { color: var(--text); }
+.sx-plot {
+  position: relative;
+  height: 10px;
+}
+.sx-plot .bar-fill {
+  border-radius: 980px;
+  background: var(--c);
+}
+/* The interval: a dark grey line with a thin white edge, so it stays readable where it crosses a bar. */
+.sx-ci {
+  position: absolute;
+  top: 50%;
+  height: 14px;
+  margin-top: -7px;
+  border-left: 1.5px solid #48484a;
+  border-right: 1.5px solid #48484a;
+}
+.sx-ci::before {
+  content: "";
+  position: absolute;
+  top: 6.25px;
+  left: 0;
+  right: 0;
+  height: 1.5px;
+  background: #48484a;
+  box-shadow: 0 0 0 1px #fff;
+}
+.sx-dot {
+  position: absolute;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  margin: -5px 0 0 -5px;
+  border-radius: 50%;
+  background: var(--c);
+  box-shadow: 0 0 0 2px var(--surface);
+}
+.sx-axis {
+  display: grid;
+  grid-template-columns: var(--name-w) minmax(0, 1fr);
+  column-gap: var(--gap);
+  height: 30px;
+  padding-top: 8px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+.sx-axis-name { text-align: right; color: var(--text); }
+.sx-axis-ticks { position: relative; }
+.sx-tick { position: absolute; top: 0; transform: translateX(-50%); }
+.sx-tick-end { transform: translateX(-100%); }
+
+/* Tap or hover text. */
+.sx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  max-width: 100%;
+  white-space: nowrap;
+  padding: 9px 13px 10px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12), 0 0 0 0.5px rgba(0, 0, 0, 0.06);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.35;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease;
+}
+.sx-tip.is-shown { opacity: 1; }
+.sx-tip-name { display: block; font-weight: 600; }
+.sx-tip-text { display: block; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+.sx-note {
+  margin: 20px 0 0;
+  max-width: 48em;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.sx-video .video-label { margin-top: 0; }
+
+@media (max-width: 720px) {
+  /* Narrow screens: each name sits above its bar, so the plot gets the full width. */
+  .sx-chart { --name-w: 0px; --gap: 0px; }
+  .sx-row {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+    padding: 5px 0 9px;
+  }
+  .sx-name {
+    padding: 0 0 7px;
+    font-size: 14px;
+    text-align: left;
+  }
+  /* Two lines above the plot: the marker label, then the band label. */
+  .sx-head { height: 58px; font-size: 12px; }
+  .sx-head-top { bottom: 30px; }
+  .sx-head-floor { bottom: 8px; }
+  .sx-rows { padding-top: 58px; }
+  .sx-plotbg { top: 58px; bottom: 50px; }
+  .sx-band { top: -26px; }
+  .sx-one { top: -30px; }
+  .sx-axis {
+    grid-template-columns: minmax(0, 1fr);
+    height: 50px;
+  }
+  .sx-axis-ticks { grid-row: 1; height: 18px; }
+  .sx-axis-name { grid-row: 2; text-align: center; }
+  .sx-dot { width: 8px; height: 8px; margin: -4px 0 0 -4px; }
+  .sx-legend { font-size: 13px; gap: 6px 14px; }
+  .sx-tip { max-width: min(250px, 100%); white-space: normal; }
+}
+
+/* ---------- Action-level score bars (chapter 5) ---------- */
+
+.ax-card {
+  margin: 0;
+  padding: clamp(24px, 3.4vw, 48px) clamp(20px, 3.4vw, 48px) clamp(28px, 3.6vw, 52px);
+  border-radius: clamp(18px, 2vw, 28px);
+  background: var(--surface);
+}
+.ax-card .term { margin-top: 6px; }
+.ax-rows {
+  display: grid;
+  gap: clamp(26px, 3vw, 36px);
+  margin-top: clamp(28px, 3.4vw, 44px);
+}
+.ax-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  column-gap: 16px;
+}
+.ax-name {
+  margin: 0 0 10px;
+  font-size: clamp(17px, 1rem + 0.25vw, 20px);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+.ax-term {
+  margin-left: 6px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.005em;
+  white-space: nowrap;
+}
+.ax-value {
+  margin: 0 0 6px;
+  font-size: clamp(26px, 1rem + 1.4vw, 36px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.ax-track {
+  grid-column: 1 / -1;
+  height: 12px;
+  background: var(--on-surface);
+}
+.ax-note {
+  grid-column: 1 / -1;
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.4;
+}
+.ax-statement {
+  margin: clamp(28px, 3.4vw, 44px) 0 0;
+  max-width: 24em;
+  font-size: clamp(24px, 1rem + 1.5vw, 40px);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.022em;
+  text-wrap: balance;
+}

@@ -8,17 +8,30 @@
   <meta property="og:title" content="Cross-Skeleton Retargeting · NeurIPS 2026">
   <meta property="og:description" content="A model can show the right action without carrying over the source motion. With sparse data, standard training and standard scores cannot tell. SIF can.">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cross-skeleton-retargeting.netlify.app/">
+  <meta property="og:image" content="https://cross-skeleton-retargeting.netlify.app/assets/social.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Cross-Skeleton Retargeting · NeurIPS 2026">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cross-Skeleton Retargeting · NeurIPS 2026">
+  <meta name="twitter:description" content="A model can show the right action without carrying over the source motion. With sparse data, standard training and standard scores cannot tell. SIF can.">
+  <meta name="twitter:image" content="https://cross-skeleton-retargeting.netlify.app/assets/social.png">
+  <meta name="twitter:image:alt" content="Cross-Skeleton Retargeting · NeurIPS 2026">
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/site.css">
+  <link rel="stylesheet" href="assets/css/training.css">
+  <link rel="stylesheet" href="assets/css/scores.css">
+  <link rel="stylesheet" href="assets/css/media.css">
 </head>
 <body>
   <nav class="topbar" id="topbar" aria-label="Page">
     <div class="topbar-inner">
       <a class="topbar-title" href="#top">Cross-Skeleton Retargeting</a>
       <div class="topbar-links">
-        <a class="pill pill-small pill-primary" href="assets/paper/neurips_2026.pdf">Paper</a>
-        <a class="pill pill-small pill-secondary" href="https://github.com/LiZhYun/NeurIPS2026-Cross-Skeleton-Retargeting">Code</a>
+        <a class="pill pill-small pill-primary" href="assets/paper/neurips_2026.pdf" target="_blank" rel="noopener noreferrer">Paper</a>
+        <a class="pill pill-small pill-secondary" href="https://github.com/LiZhYun/NeurIPS2026-Cross-Skeleton-Retargeting" target="_blank" rel="noopener noreferrer">Code</a>
       </div>
     </div>
     <div class="topbar-progress" id="topbar-progress" aria-hidden="true"></div>
@@ -30,17 +43,17 @@
         <p class="venue">NeurIPS 2026</p>
         <h1 class="title">Why <span class="nowrap">Cross-Skeleton</span> Retargeting Is <span class="nowrap">Non-Identifiable:</span> <span class="title-rest">Structural Limits of Generative Motion Models</span></h1>
         <p class="authors">
-          <a href="https://lizhyun.github.io/">Zhiyuan Li</a><sup>1</sup>,
-          <a href="https://uenian33.github.io/">Wenyan Yang</a><sup>1</sup>,
-          <a href="https://users.ics.aalto.fi/~pemartti/">Pekka Marttinen</a><sup>2</sup>,
-          <a href="https://rl.aalto.fi/team/">Joni Pajarinen</a><sup>1</sup>
+          <a href="https://lizhyun.github.io/" target="_blank" rel="noopener noreferrer">Zhiyuan Li</a><sup>1</sup>,
+          <a href="https://uenian33.github.io/" target="_blank" rel="noopener noreferrer">Wenyan Yang</a><sup>1</sup>,
+          <a href="https://users.ics.aalto.fi/~pemartti/" target="_blank" rel="noopener noreferrer">Pekka Marttinen</a><sup>2</sup>,
+          <a href="https://rl.aalto.fi/team/" target="_blank" rel="noopener noreferrer">Joni Pajarinen</a><sup>1</sup>
         </p>
         <p class="affiliation">Aalto University, Finland</p>
         <p class="departments"><span><sup>1</sup> Department of Electrical Engineering and Automation</span> <span class="dot" aria-hidden="true">·</span> <span><sup>2</sup> Department of Computer Science</span></p>
         <div class="buttons">
-          <a class="pill pill-primary" href="assets/paper/neurips_2026.pdf">Paper</a>
-          <a class="pill pill-secondary" href="https://openreview.net/forum?id=4KPh2cXttv">OpenReview</a>
-          <a class="pill pill-secondary" href="https://github.com/LiZhYun/NeurIPS2026-Cross-Skeleton-Retargeting">Code</a>
+          <a class="pill pill-primary" href="assets/paper/neurips_2026.pdf" target="_blank" rel="noopener noreferrer">Paper</a>
+          <a class="pill pill-secondary" href="https://openreview.net/forum?id=4KPh2cXttv" target="_blank" rel="noopener noreferrer">OpenReview</a>
+          <a class="pill pill-secondary" href="https://github.com/LiZhYun/NeurIPS2026-Cross-Skeleton-Retargeting" target="_blank" rel="noopener noreferrer">Code</a>
           <a class="pill pill-secondary" href="#cite">BibTeX</a>
         </div>
       </div>
@@ -60,22 +73,475 @@
         <p class="lead">Retargeting carries a motion from one body to another. A model can show the right action on the new body without carrying over anything from the clip it was given. We show that when data are sparse and the bodies differ, the standard ways of training cannot tell these two cases apart, and neither can the usual action-level score. Our measure, SIF, can. On animal motion, nine of the fourteen methods we tested score at or near the level of a method that ignores its source.</p>
         <details class="fold">
           <summary>Read the abstract</summary>
-          <p class="fold-body">Cross-skeleton motion generation trains generative models to carry action structure and motion intention from one body to another. Yet a target motion that shows the right action has two explanations that the training data cannot tell apart: the model transferred the source clip, or it recovered a typical motion for the requested action. We show that this ambiguity is structural rather than incidental: under standard generative objectives, the source-conditioned retargeting map is non-identifiable in sparse heterogeneous motion domains. Unpaired distribution matching yields <em>gauge non-identifiability</em>: the latent spaces of different skeletons can be transformed relative to one another without changing the training evidence, so different source-conditioned maps fit it equally well. Sparse paired supervision admits the complementary failure mode, <em>conditional-mean degeneration</em>: when clips are paired only by action, squared-error training converges to an average target motion that ignores the source clip. To make the missing evidence observable, we introduce <em>Source-Instance Fidelity</em> (SIF), a diagnostic that tests whether outputs differ from one another the way their source clips do, with the target skeleton and action held fixed. Under this diagnostic, methods that succeed at the standard action-level test on animal motion data often sit at the <em>source-blind floor</em>, while the methods that rise above it retain only a partial relational signal. Retargeting therefore needs objectives and evaluations that can identify the source-conditioned map it claims to learn. Project page: <a href="https://keen-semolina-09811d.netlify.app/">https://keen-semolina-09811d.netlify.app/</a>.</p>
+          <p class="fold-body">Cross-skeleton motion generation trains generative models to carry action structure and motion intention from one body to another. Yet a target motion that shows the right action has two explanations that the training data cannot tell apart: the model transferred the source clip, or it recovered a typical motion for the requested action. We show that this ambiguity is structural rather than incidental: under standard generative objectives, the source-conditioned retargeting map is non-identifiable in sparse heterogeneous motion domains. Unpaired distribution matching yields <em>gauge non-identifiability</em>: the latent spaces of different skeletons can be transformed relative to one another without changing the training evidence, so different source-conditioned maps fit it equally well. Sparse paired supervision admits the complementary failure mode, <em>conditional-mean degeneration</em>: when clips are paired only by action, squared-error training converges to an average target motion that ignores the source clip. To make the missing evidence observable, we introduce <em>Source-Instance Fidelity</em> (SIF), a diagnostic that tests whether outputs differ from one another the way their source clips do, with the target skeleton and action held fixed. Under this diagnostic, methods that succeed at the standard action-level test on animal motion data often sit at the <em>source-blind floor</em>, while the methods that rise above it retain only a partial relational signal. Retargeting therefore needs objectives and evaluations that can identify the source-conditioned map it claims to learn. Project page: <a href="https://keen-semolina-09811d.netlify.app/" target="_blank" rel="noopener noreferrer">https://keen-semolina-09811d.netlify.app/</a>.</p>
         </details>
       </div>
     </section>
 
-    <!-- PREVIEW ONLY: placeholder note. Remove this section when the rest of the page is built. -->
-    <section class="band" id="next">
-      <div class="wrap wrap-text">
-        <p class="muted-note">The rest of the page is coming in the next preview.</p>
+    <section class="chapter" id="problem">
+      <div class="wrap">
+        <h2 class="chapter-title">What does retargeting have to get right?</h2>
+        <p class="chapter-lead">It has to carry over how this particular clip moves, not only which action it is. Here each method gets the same bird attack clip and must turn it into a king cobra attack.</p>
+      </div>
+      <div class="mx-wide chapter-body">
+        <p class="video-label" id="problem-label">Bird → King cobra, attack</p>
+        <div class="media-frame mx-frame" style="--ratio: 16 / 9">
+          <video data-src="assets/videos/animals/main_panorama.mp4" poster="assets/videos/animals/main_panorama.jpg" data-enlarge
+                 aria-labelledby="problem-label" muted loop playsinline preload="none"></video>
+        </div>
+        <p class="caption">One bird clip on top. Below it, the king cobra motion each method made from that clip. The outputs differ a lot, though every method got the same clip.</p>
+      </div>
+    </section>
+    <section class="chapter chapter-alt" id="training">
+      <div class="wrap">
+        <h2 class="chapter-title">Why can't training tell the difference?</h2>
+        <p class="chapter-lead">The animal data shows which bodies do which actions. It never shows which target motion belongs to which source clip. The two usual ways of training leave that choice open.</p>
+
+        <h3 class="chapter-sub tr-sub">Training without pairs</h3>
+        <div class="chapter-body">
+          <div class="steps" id="training-unpaired">
+            <div class="steps-visual"><div class="steps-sticky"><div class="steps-stage"></div></div></div>
+            <div class="steps-beats">
+              <div class="step"><p class="step-text">Each dot is one motion. Training sees only how each body's motions are spread out, never which goes with which.</p></div>
+              <div class="step"><p class="step-text">Now turn the target body's dots. Their shape does not change.</p></div>
+              <div class="step"><p class="step-text">The training loss does not change either.</p></div>
+              <div class="step"><p class="step-text">But every source dot now lands on a different target dot.</p></div>
+            </div>
+          </div>
+          <p class="caption">Many different maps fit the training data equally well.</p>
+          <p class="term">gauge non-identifiability</p>
+        </div>
+
+        <h3 class="chapter-sub tr-sub">Training with pairs matched only by action</h3>
+        <div class="chapter-body">
+          <div class="steps" id="training-paired">
+            <div class="steps-visual"><div class="steps-sticky"><div class="steps-stage"></div></div></div>
+            <div class="steps-beats">
+              <div class="step"><p class="step-text">One source clip. Several target clips of the same action would all be valid.</p></div>
+              <div class="step"><p class="step-text">Each training step pairs it with one of them at random.</p></div>
+              <div class="step"><p class="step-text">The model's answer is pulled toward the middle.</p></div>
+              <div class="step"><p class="step-text">It settles on the average, the same answer for every source clip.</p></div>
+            </div>
+          </div>
+          <p class="caption">In a test where the correct answer is known, going from 2 to 50 training pairs per group does not help. The model keeps about 2% of the variation it should.</p>
+          <p class="term">conditional-mean degeneration</p>
+        </div>
+      </div>
+    </section>
+    <section class="chapter" id="sif">
+      <div class="wrap">
+        <h2 class="chapter-title">How do we measure it?</h2>
+        <p class="chapter-lead">Take a few source clips of the same action and look at their outputs on one target body. Source clips that differ more should give outputs that differ more.</p>
+
+        <div class="chapter-body">
+          <!-- The picture is drawn by scores.js; the beat texts carry the explanation. -->
+          <div class="steps sx-steps" id="sif-steps">
+            <div class="steps-visual"><div class="steps-sticky"><div class="steps-stage sx-stage"></div></div></div>
+            <div class="steps-beats">
+              <div class="step"><p class="step-text">Three source clips: same body, same action.</p></div>
+              <div class="step"><p class="step-text">A line joins every pair. The thicker the line, the more the two clips differ.</p></div>
+              <div class="step"><p class="step-text">A faithful model: the output lines match the source lines.</p></div>
+              <div class="step"><p class="step-text">A model that ignores the source: its output lines no longer follow the source lines.</p></div>
+            </div>
+          </div>
+          <p class="caption">SIF asks whether outputs differ from each other the way their sources do.</p>
+        </div>
+
+        <p class="chapter-lead sx-results-lead">We scored fourteen methods on 1,891 combinations of source animal, target animal and action. <strong>Nine score at or near the floor:</strong> the range of scores a method gets when it ignores its source.</p>
+        <p class="term">source-blind floor</p>
+
+        <div class="chapter-body">
+          <figure class="sx-card">
+            <figcaption class="sx-card-head">
+              <h3 class="sx-chart-title">SIF on 1,891 animal test cases</h3>
+              <ul class="sx-legend">
+                <li><span class="sx-swatch sx-above"></span>Above the floor</li>
+                <li><span class="sx-swatch sx-near"></span>Near the floor</li>
+                <li><span class="sx-swatch sx-at"></span>At the floor</li>
+              </ul>
+            </figcaption>
+
+            <!-- Scale: -0.15 on the left edge of the plot to 1 on the right edge; x% = (value + 0.15) / 1.15.
+                 Bars use the three-place raw SIF from tab_sif_main_1891; intervals use the rounded bounds shown in the tap text. -->
+            <div class="sx-chart" data-bars>
+              <div class="sx-head" aria-hidden="true">
+                <span class="sx-head-floor">Source-blind floor</span>
+                <span class="sx-head-top">A faithful map scores near 1</span>
+              </div>
+              <div class="sx-plotbg" aria-hidden="true">
+                <div class="sx-band"></div>
+                <div class="sx-zero"></div>
+                <div class="sx-one"></div>
+              </div>
+
+              <div class="sx-rows">
+                <button type="button" class="sx-row sx-above" style="--i: 0" data-tip="SIF +0.42 [+0.31, +0.53]"><span class="sx-name">ACE-I</span><span class="sx-plot"><span class="bar-fill" style="left: 13.043%; width: 36.522%"></span><span class="sx-ci bar-after" style="left: 40%; width: 19.13%"></span><span class="sx-dot bar-after" style="left: 49.565%"></span></span></button>
+                <button type="button" class="sx-row sx-above" style="--i: 0.5" data-tip="SIF +0.34 [+0.24, +0.44]"><span class="sx-name">ACE-T</span><span class="sx-plot"><span class="bar-fill" style="left: 13.043%; width: 29.217%"></span><span class="sx-ci bar-after" style="left: 33.913%; width: 17.391%"></span><span class="sx-dot bar-after" style="left: 42.261%"></span></span></button>
+                <button type="button" class="sx-row sx-above" style="--i: 1" data-tip="SIF +0.26 [+0.19, +0.33]"><span class="sx-name">MoReFlow-I</span><span class="sx-plot"><span class="bar-fill" style="left: 13.043%; width: 22.348%"></span><span class="sx-ci bar-after" style="left: 29.565%; width: 12.174%"></span><span class="sx-dot bar-after" style="left: 35.391%"></span></span></button>
+                <button type="button" class="sx-row sx-above" style="--i: 1.5" data-tip="SIF +0.26 [+0.19, +0.33]"><span class="sx-name">MoReFlow-T</span><span class="sx-plot"><span class="bar-fill" style="left: 13.043%; width: 22.174%"></span><span class="sx-ci bar-after" style="left: 29.565%; width: 12.174%"></span><span class="sx-dot bar-after" style="left: 35.217%"></span></span></button>
+                <button type="button" class="sx-row sx-above" style="--i: 2" data-tip="SIF +0.14 [+0.08, +0.22]"><span class="sx-name">Motion2Motion-Direct</span><span class="sx-plot"><span class="bar-fill" style="left: 13.043%; width: 12.435%"></span><span class="sx-ci bar-after" style="left: 20%; width: 12.174%"></span><span class="sx-dot bar-after" style="left: 25.478%"></span></span></button>
+                <button type="button" class="sx-row sx-near" style="--i: 2.5" data-tip="SIF +0.03 [0.00, +0.07], 1,872 cases"><span class="sx-name">Motion2Motion-BVH</span><span class="sx-plot"><span class="bar-fill" style="left: 13.043%; width: 2.783%"></span><span class="sx-ci bar-after" style="left: 13.043%; width: 6.087%"></span><span class="sx-dot bar-after" style="left: 15.826%"></span></span></button>
+                <button type="button" class="sx-row sx-at" style="--i: 3" data-tip="SIF +0.02 [&minus;0.02, +0.06], 1,683 cases"><span class="sx-name">AL-Flow</span><span class="sx-plot"><span class="bar-fill" style="left: 13.043%; width: 1.739%"></span><span class="sx-ci bar-after" style="left: 11.304%; width: 6.957%"></span><span class="sx-dot bar-after" style="left: 14.783%"></span></span></button>
+                <button type="button" class="sx-row sx-at" style="--i: 3.5" data-tip="SIF +0.02 [&minus;0.01, +0.04]"><span class="sx-name">DPG-SB-v3</span><span class="sx-plot"><span class="bar-fill" style="left: 13.043%; width: 1.391%"></span><span class="sx-ci bar-after" style="left: 12.174%; width: 4.348%"></span><span class="sx-dot bar-after" style="left: 14.435%"></span></span></button>
+                <button type="button" class="sx-row sx-at" style="--i: 4" data-tip="SIF +0.01 [&minus;0.03, +0.05]"><span class="sx-name">ANCHOR</span><span class="sx-plot"><span class="bar-fill" style="left: 13.043%; width: 0.522%"></span><span class="sx-ci bar-after" style="left: 10.435%; width: 6.957%"></span><span class="sx-dot bar-after" style="left: 13.565%"></span></span></button>
+                <button type="button" class="sx-row sx-at" style="--i: 4.5" data-tip="SIF +0.00 [&minus;0.01, +0.02], 1,864 cases"><span class="sx-name">Random clip, same exact action</span><span class="sx-plot"><span class="bar-fill" style="left: 13.043%; width: 0.174%"></span><span class="sx-ci bar-after" style="left: 12.174%; width: 2.609%"></span><span class="sx-dot bar-after" style="left: 13.217%"></span></span></button>
+                <button type="button" class="sx-row sx-at" style="--i: 5" data-tip="SIF &minus;0.01 [&minus;0.04, +0.02], 1,413 cases"><span class="sx-name">AL-Flow-Src</span><span class="sx-plot"><span class="bar-fill grows-left" style="left: 12%; width: 1.043%"></span><span class="sx-ci bar-after" style="left: 9.565%; width: 5.217%"></span><span class="sx-dot bar-after" style="left: 12%"></span></span></button>
+                <button type="button" class="sx-row sx-at" style="--i: 5.5" data-tip="SIF &minus;0.02 [&minus;0.05, &minus;0.002], 1,883 cases"><span class="sx-name">Random clip, same action group</span><span class="sx-plot"><span class="bar-fill grows-left" style="left: 11.043%; width: 2%"></span><span class="sx-ci bar-after" style="left: 8.696%; width: 4.174%"></span><span class="sx-dot bar-after" style="left: 11.043%"></span></span></button>
+                <button type="button" class="sx-row sx-at" style="--i: 6" data-tip="SIF &minus;0.02 [&minus;0.06, +0.01]"><span class="sx-name">AL-Flow-Src-G</span><span class="sx-plot"><span class="bar-fill grows-left" style="left: 10.957%; width: 2.087%"></span><span class="sx-ci bar-after" style="left: 7.826%; width: 6.087%"></span><span class="sx-dot bar-after" style="left: 10.957%"></span></span></button>
+                <button type="button" class="sx-row sx-at" style="--i: 6.5" data-tip="SIF &minus;0.05 [&minus;0.12, +0.03]"><span class="sx-name">AnyTop</span><span class="sx-plot"><span class="bar-fill grows-left" style="left: 8.87%; width: 4.174%"></span><span class="sx-ci bar-after" style="left: 2.609%; width: 13.043%"></span><span class="sx-dot bar-after" style="left: 8.87%"></span></span></button>
+              </div>
+
+              <div class="sx-axis" aria-hidden="true">
+                <span class="sx-axis-name">SIF</span>
+                <span class="sx-axis-ticks"><span class="sx-tick" style="left: 13.043%">0</span><span class="sx-tick sx-tick-end" style="left: 100%">1</span></span>
+              </div>
+              <div class="sx-tip" aria-hidden="true"><strong class="sx-tip-name"></strong><span class="sx-tip-text"></span></div>
+            </div>
+            <p class="sx-note">Raw scores with 95% intervals. Methods that cannot handle a case are scored on the rest (at least 1,413 cases). The paper also reports scores with clip length controlled.</p>
+          </figure>
+          <p class="caption">The methods above the floor keep only part of the source. The two highest in this raw view barely change their outputs when the source changes, and they fall to or below the next two when clip length is controlled.</p>
+        </div>
+
+        <h3 class="chapter-sub">What losing the source looks like</h3>
+        <div class="chapter-body sx-video">
+          <span class="video-label">Bird → King cobra, attack</span>
+          <div class="media-frame mx-frame" style="--ratio: 16 / 9">
+            <video data-src="assets/videos/animals/main_failuremodes.mp4" poster="assets/videos/animals/main_failuremodes.jpg" data-enlarge aria-label="Bird → King cobra, attack" muted loop playsinline preload="none"></video>
+          </div>
+          <p class="caption">Three different bird clips go in on the left. Each row shows one method's king cobra motions on the right. The top two rows sit at the floor: their outputs move alike whatever the source. The bottom two rise above it but keep only part of the source. The fourth keeps the order of the sources, but its outputs barely differ.</p>
+        </div>
+      </div>
+    </section>
+    <section class="chapter chapter-alt" id="action-score">
+      <div class="wrap">
+        <h2 class="chapter-title">Why aren't <span class="nowrap">action-level</span> scores enough?</h2>
+        <p class="chapter-lead">An action-level score checks that the target does the right kind of thing. It cannot check that the motion came from the source.</p>
+
+        <div class="chapter-body">
+          <!-- Held-out AUC from tab_label_only; bar length = AUC on a 0 to 1 scale. -->
+          <figure class="ax-card">
+            <figcaption>
+              <h3 class="ax-title">Action-level score on animals left out of training</h3>
+              <p class="term">held-out AUC</p>
+            </figcaption>
+            <div class="ax-rows" data-bars>
+              <div class="ax-row" style="--i: 0">
+                <p class="ax-name">Lookup of stored target clips <span class="ax-term">ANCHOR</span></p>
+                <p class="ax-value bar-after">0.681</p>
+                <div class="bar-track ax-track"><div class="bar-fill" style="width: 68.1%"></div></div>
+              </div>
+              <div class="ax-row" style="--i: 1">
+                <p class="ax-name">Random clip, same action group</p>
+                <p class="ax-value bar-after">0.678</p>
+                <div class="bar-track ax-track"><div class="bar-fill" style="width: 67.8%"></div></div>
+                <p class="ax-note bar-after">answers 177 of 200 queries</p>
+              </div>
+              <div class="ax-row" style="--i: 2">
+                <p class="ax-name">Random clip, same exact action</p>
+                <p class="ax-value bar-after">0.923</p>
+                <div class="bar-track ax-track"><div class="bar-fill" style="width: 92.3%"></div></div>
+                <p class="ax-note bar-after">answers only 57 of 200 queries</p>
+              </div>
+            </div>
+          </figure>
+          <p class="ax-statement">A random clip with the right label scores as well.</p>
+        </div>
+      </div>
+    </section>
+    <section class="chapter" id="robots">
+      <div class="wrap">
+        <h2 class="chapter-title">What happens when the true answer is known?</h2>
+        <p class="chapter-lead">For human motion moved to humanoid robots, a public retargeting tool gives a robot version of every human clip, which we treat as the true answer. Trained on those true pairs, a model keeps what makes each clip different. Trained without pairs, or with pairs matched only by the routine, it loses most of it.</p>
+        <p class="term">These pairs come from a retargeting tool, not animators, and the robots are all humanoids.</p>
+      </div>
+
+      <div class="wrap">
+        <h3 class="chapter-sub rb-sub">One dance, six robots</h3>
+      </div>
+      <div class="mx-wide rb-body">
+        <div class="rb-six">
+          <div class="rb-cell rb-human">
+            <p class="video-label">Human</p>
+            <div class="media-frame mx-frame" style="--ratio: 16 / 9">
+              <video data-src="assets/videos/robots/six_human.mp4" poster="assets/videos/robots/six_human.jpg" data-sync="six-robots"
+                   aria-label="Human" muted loop playsinline preload="none"></video>
+            </div>
+          </div>
+          <div class="rb-cell rb-robot rb-r1">
+            <p class="video-label">Unitree G1</p>
+            <div class="media-frame mx-frame" style="--ratio: 16 / 9">
+              <video data-src="assets/videos/robots/six_unitree_g1.mp4" poster="assets/videos/robots/six_unitree_g1.jpg" data-sync="six-robots" data-no-toggle
+                   aria-label="Unitree G1" muted loop playsinline preload="none"></video>
+            </div>
+          </div>
+          <div class="rb-cell rb-robot rb-r2">
+            <p class="video-label">Booster T1</p>
+            <div class="media-frame mx-frame" style="--ratio: 16 / 9">
+              <video data-src="assets/videos/robots/six_booster_t1_29dof.mp4" poster="assets/videos/robots/six_booster_t1_29dof.jpg" data-sync="six-robots" data-no-toggle
+                   aria-label="Booster T1" muted loop playsinline preload="none"></video>
+            </div>
+          </div>
+          <div class="rb-cell rb-robot rb-r3">
+            <p class="video-label">Fourier N1</p>
+            <div class="media-frame mx-frame" style="--ratio: 16 / 9">
+              <video data-src="assets/videos/robots/six_fourier_n1.mp4" poster="assets/videos/robots/six_fourier_n1.jpg" data-sync="six-robots" data-no-toggle
+                   aria-label="Fourier N1" muted loop playsinline preload="none"></video>
+            </div>
+          </div>
+          <div class="rb-cell rb-robot rb-r4">
+            <p class="video-label">Stanford Toddy</p>
+            <div class="media-frame mx-frame" style="--ratio: 16 / 9">
+              <video data-src="assets/videos/robots/six_stanford_toddy.mp4" poster="assets/videos/robots/six_stanford_toddy.jpg" data-sync="six-robots" data-no-toggle
+                   aria-label="Stanford Toddy" muted loop playsinline preload="none"></video>
+            </div>
+          </div>
+          <div class="rb-cell rb-robot rb-r5">
+            <p class="video-label">EngineAI PM01</p>
+            <div class="media-frame mx-frame" style="--ratio: 16 / 9">
+              <video data-src="assets/videos/robots/six_engineai_pm01.mp4" poster="assets/videos/robots/six_engineai_pm01.jpg" data-sync="six-robots" data-no-toggle
+                   aria-label="EngineAI PM01" muted loop playsinline preload="none"></video>
+            </div>
+          </div>
+          <div class="rb-cell rb-robot rb-r6">
+            <p class="video-label">PAL Talos</p>
+            <div class="media-frame mx-frame" style="--ratio: 16 / 9">
+              <video data-src="assets/videos/robots/six_pal_talos.mp4" poster="assets/videos/robots/six_pal_talos.jpg" data-sync="six-robots" data-no-toggle
+                   aria-label="PAL Talos" muted loop playsinline preload="none"></video>
+            </div>
+          </div>
+        </div>
+        <p class="caption">The tool's output for each robot, which we treat as the true answer.</p>
+      </div>
+      <div class="wrap">
+        <h3 class="chapter-sub rb-sub">Two dancers, same routine, on the Unitree G1</h3>
+      </div>
+      <div class="mx-wide rb-body">
+        <div class="rb-switch" role="group" hidden>
+          <button type="button" class="rb-switch-button" data-dancer="1" aria-pressed="true">Dancer 1</button>
+          <button type="button" class="rb-switch-button" data-dancer="2" aria-pressed="false">Dancer 2</button>
+        </div>
+        <div class="rb-table" data-dancer="1" data-bars>
+          <div class="rb-head">
+            <span class="rb-col-blank"></span>
+            <p class="rb-col rb-d1">Dancer 1</p>
+            <p class="rb-col rb-d2">Dancer 2</p>
+            <p class="rb-col rb-col-kept">Difference kept</p>
+          </div>
+          <div class="rb-row" style="--i: 0">
+            <div class="rb-name">
+              <p class="rb-row-label">True answer</p>
+              <p class="rb-note">from the public retargeting tool</p>
+            </div>
+            <div class="rb-clip rb-d1">
+              <div class="media-frame mx-frame" style="--ratio: 16 / 9">
+                <video data-src="assets/videos/robots/dancer1_true_retarget.mp4" poster="assets/videos/robots/dancer1_true_retarget.jpg" data-sync="two-dancers"
+                   aria-label="Dancer 1, True answer" muted loop playsinline preload="none"></video>
+              </div>
+            </div>
+            <div class="rb-clip rb-d2">
+              <div class="media-frame mx-frame" style="--ratio: 16 / 9">
+                <video data-src="assets/videos/robots/dancer2_true_retarget.mp4" poster="assets/videos/robots/dancer2_true_retarget.jpg" data-sync="two-dancers"
+                   aria-label="Dancer 2, True answer" muted loop playsinline preload="none"></video>
+              </div>
+            </div>
+            <div class="rb-kept">
+              <p class="rb-value rb-ref">reference</p>
+            </div>
+          </div>
+          <div class="rb-row" style="--i: 1">
+            <div class="rb-name">
+              <p class="rb-row-label">Trained on true pairs</p>
+            </div>
+            <div class="rb-clip rb-d1">
+              <div class="media-frame mx-frame" style="--ratio: 16 / 9">
+                <video data-src="assets/videos/robots/dancer1_true_pair_model.mp4" poster="assets/videos/robots/dancer1_true_pair_model.jpg" data-sync="two-dancers" data-no-toggle
+                   aria-label="Dancer 1, Trained on true pairs" muted loop playsinline preload="none"></video>
+              </div>
+            </div>
+            <div class="rb-clip rb-d2">
+              <div class="media-frame mx-frame" style="--ratio: 16 / 9">
+                <video data-src="assets/videos/robots/dancer2_true_pair_model.mp4" poster="assets/videos/robots/dancer2_true_pair_model.jpg" data-sync="two-dancers" data-no-toggle
+                   aria-label="Dancer 2, Trained on true pairs" muted loop playsinline preload="none"></video>
+              </div>
+            </div>
+            <div class="rb-kept">
+              <p class="rb-value bar-after">99%</p>
+              <div class="bar-track rb-track"><div class="bar-fill" style="width: 99%"></div></div>
+            </div>
+          </div>
+          <div class="rb-row" style="--i: 2">
+            <div class="rb-name">
+              <p class="rb-row-label">Trained on random pairs</p>
+              <p class="rb-note">paired at random within the same routine</p>
+            </div>
+            <div class="rb-clip rb-d1">
+              <div class="media-frame mx-frame" style="--ratio: 16 / 9">
+                <video data-src="assets/videos/robots/dancer1_averaging_objective.mp4" poster="assets/videos/robots/dancer1_averaging_objective.jpg" data-sync="two-dancers" data-no-toggle
+                   aria-label="Dancer 1, Trained on random pairs" muted loop playsinline preload="none"></video>
+              </div>
+            </div>
+            <div class="rb-clip rb-d2">
+              <div class="media-frame mx-frame" style="--ratio: 16 / 9">
+                <video data-src="assets/videos/robots/dancer2_averaging_objective.mp4" poster="assets/videos/robots/dancer2_averaging_objective.jpg" data-sync="two-dancers" data-no-toggle
+                   aria-label="Dancer 2, Trained on random pairs" muted loop playsinline preload="none"></video>
+              </div>
+            </div>
+            <div class="rb-kept">
+              <p class="rb-value bar-after">3.5%</p>
+              <div class="bar-track rb-track"><div class="bar-fill" style="width: 3.5%"></div></div>
+            </div>
+          </div>
+          <div class="rb-row" style="--i: 3">
+            <div class="rb-name">
+              <p class="rb-row-label">Trained without pairs</p>
+              <p class="rb-note">never sees a pair</p>
+            </div>
+            <div class="rb-clip rb-d1">
+              <div class="media-frame mx-frame" style="--ratio: 16 / 9">
+                <video data-src="assets/videos/robots/dancer1_unpaired_objective.mp4" poster="assets/videos/robots/dancer1_unpaired_objective.jpg" data-sync="two-dancers" data-no-toggle
+                   aria-label="Dancer 1, Trained without pairs" muted loop playsinline preload="none"></video>
+              </div>
+            </div>
+            <div class="rb-clip rb-d2">
+              <div class="media-frame mx-frame" style="--ratio: 16 / 9">
+                <video data-src="assets/videos/robots/dancer2_unpaired_objective.mp4" poster="assets/videos/robots/dancer2_unpaired_objective.jpg" data-sync="two-dancers" data-no-toggle
+                   aria-label="Dancer 2, Trained without pairs" muted loop playsinline preload="none"></video>
+              </div>
+            </div>
+            <div class="rb-kept">
+              <p class="rb-value bar-after">1.2%</p>
+              <div class="bar-track rb-track"><div class="bar-fill" style="width: 1.2%"></div></div>
+            </div>
+          </div>
+        </div>
+        <p class="caption">How much of the difference between performers each model keeps, compared with the true answer, over all 26 routines on the Unitree G1 (LAFAN1 study, denser setting). The two dancers shown are one of those routines. They are not in step, so part of the difference you see is timing.</p>
+        <p class="rb-credit">Human motion: LAFAN1 by Ubisoft La Forge, <span class="nowrap">CC BY-NC-ND 4.0</span>. Robot motion made with GMR, a public retargeting tool (MIT License); robot models as distributed with GMR, credited to their original sources in its repository.</p>
+      </div>
+    </section>
+    <section class="chapter chapter-alt" id="examples">
+      <div class="wrap">
+        <h2 class="chapter-title">What do the methods do with other animals?</h2>
+        <p class="chapter-lead">Each video fixes one source animal, one target animal and one action. Three source clips play on top, and each row below is one method's three outputs.</p>
+      </div>
+      <div class="mx-wide chapter-body">
+        <ul class="gx-grid">
+          <li class="gx-item">
+            <button class="gx-button" type="button" data-lightbox="assets/videos/animals/app_triple_1_spiderg_tricera_attack.mp4" data-poster="assets/videos/animals/app_triple_1_spiderg_tricera_attack.jpg" data-ratio="0.5625" data-label="Spider → Triceratops, attack">
+              <span class="gx-still">
+                <img src="assets/videos/animals/app_triple_1_spiderg_tricera_attack.jpg" alt="" width="1080" height="1920" loading="lazy" decoding="async">
+                <span class="gx-play" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3 1.8v10.4c0 .6.7 1 1.2.7l8.3-5.2c.5-.3.5-1 0-1.3L4.2 1.1C3.7.8 3 1.2 3 1.8z"/></svg>Tap to play</span>
+              </span>
+              <span class="gx-label">Spider&nbsp;→ Triceratops, attack</span>
+            </button>
+          </li>
+          <li class="gx-item">
+            <button class="gx-button" type="button" data-lightbox="assets/videos/animals/app_triple_2_sandmouse_ostrich_idle.mp4" data-poster="assets/videos/animals/app_triple_2_sandmouse_ostrich_idle.jpg" data-ratio="0.5625" data-label="Sand mouse → Ostrich, idle">
+              <span class="gx-still">
+                <img src="assets/videos/animals/app_triple_2_sandmouse_ostrich_idle.jpg" alt="" width="1080" height="1920" loading="lazy" decoding="async">
+                <span class="gx-play" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3 1.8v10.4c0 .6.7 1 1.2.7l8.3-5.2c.5-.3.5-1 0-1.3L4.2 1.1C3.7.8 3 1.2 3 1.8z"/></svg>Tap to play</span>
+              </span>
+              <span class="gx-label">Sand mouse&nbsp;→ Ostrich, idle</span>
+            </button>
+          </li>
+          <li class="gx-item">
+            <button class="gx-button" type="button" data-lightbox="assets/videos/animals/app_triple_3_dragon_giantbee_idle.mp4" data-poster="assets/videos/animals/app_triple_3_dragon_giantbee_idle.jpg" data-ratio="0.5625" data-label="Dragon → Giant bee, idle">
+              <span class="gx-still">
+                <img src="assets/videos/animals/app_triple_3_dragon_giantbee_idle.jpg" alt="" width="1080" height="1920" loading="lazy" decoding="async">
+                <span class="gx-play" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3 1.8v10.4c0 .6.7 1 1.2.7l8.3-5.2c.5-.3.5-1 0-1.3L4.2 1.1C3.7.8 3 1.2 3 1.8z"/></svg>Tap to play</span>
+              </span>
+              <span class="gx-label">Dragon&nbsp;→ Giant bee, idle</span>
+            </button>
+          </li>
+          <li class="gx-item">
+            <button class="gx-button" type="button" data-lightbox="assets/videos/animals/app_triple_4_horse_ant_idle.mp4" data-poster="assets/videos/animals/app_triple_4_horse_ant_idle.jpg" data-ratio="0.5625" data-label="Horse → Ant, idle">
+              <span class="gx-still">
+                <img src="assets/videos/animals/app_triple_4_horse_ant_idle.jpg" alt="" width="1080" height="1920" loading="lazy" decoding="async">
+                <span class="gx-play" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3 1.8v10.4c0 .6.7 1 1.2.7l8.3-5.2c.5-.3.5-1 0-1.3L4.2 1.1C3.7.8 3 1.2 3 1.8z"/></svg>Tap to play</span>
+              </span>
+              <span class="gx-label">Horse&nbsp;→ Ant, idle</span>
+            </button>
+          </li>
+          <li class="gx-item">
+            <button class="gx-button" type="button" data-lightbox="assets/videos/animals/app_triple_5_coyote_ostrich_attack.mp4" data-poster="assets/videos/animals/app_triple_5_coyote_ostrich_attack.jpg" data-ratio="0.5625" data-label="Coyote → Ostrich, attack">
+              <span class="gx-still">
+                <img src="assets/videos/animals/app_triple_5_coyote_ostrich_attack.jpg" alt="" width="1080" height="1920" loading="lazy" decoding="async">
+                <span class="gx-play" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3 1.8v10.4c0 .6.7 1 1.2.7l8.3-5.2c.5-.3.5-1 0-1.3L4.2 1.1C3.7.8 3 1.2 3 1.8z"/></svg>Tap to play</span>
+              </span>
+              <span class="gx-label">Coyote&nbsp;→ Ostrich, attack</span>
+            </button>
+          </li>
+          <li class="gx-item">
+            <button class="gx-button" type="button" data-lightbox="assets/videos/animals/app_triple_6_rhino_spiderg_attack.mp4" data-poster="assets/videos/animals/app_triple_6_rhino_spiderg_attack.jpg" data-ratio="0.5625" data-label="Rhino → Spider, attack">
+              <span class="gx-still">
+                <img src="assets/videos/animals/app_triple_6_rhino_spiderg_attack.jpg" alt="" width="1080" height="1920" loading="lazy" decoding="async">
+                <span class="gx-play" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3 1.8v10.4c0 .6.7 1 1.2.7l8.3-5.2c.5-.3.5-1 0-1.3L4.2 1.1C3.7.8 3 1.2 3 1.8z"/></svg>Tap to play</span>
+              </span>
+              <span class="gx-label">Rhino&nbsp;→ Spider, attack</span>
+            </button>
+          </li>
+          <li class="gx-item">
+            <button class="gx-button" type="button" data-lightbox="assets/videos/animals/app_triple_7_hippo_lion_attack.mp4" data-poster="assets/videos/animals/app_triple_7_hippo_lion_attack.jpg" data-ratio="0.5625" data-label="Hippo → Lion, attack">
+              <span class="gx-still">
+                <img src="assets/videos/animals/app_triple_7_hippo_lion_attack.jpg" alt="" width="1080" height="1920" loading="lazy" decoding="async">
+                <span class="gx-play" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3 1.8v10.4c0 .6.7 1 1.2.7l8.3-5.2c.5-.3.5-1 0-1.3L4.2 1.1C3.7.8 3 1.2 3 1.8z"/></svg>Tap to play</span>
+              </span>
+              <span class="gx-label">Hippo&nbsp;→ Lion, attack</span>
+            </button>
+          </li>
+        </ul>
+        <p class="caption gx-caption">A row whose three outputs move alike has lost what made the source clips different.</p>
+      </div>
+    </section>
+    <section class="chapter" id="code">
+      <div class="wrap">
+        <h2 class="chapter-title">How can I check my own method?</h2>
+        <p class="chapter-lead">SIF needs only NumPy. Give it your source clips and your outputs, grouped by source animal, target animal and action.</p>
+
+        <div class="chapter-body cx-body">
+          <div class="code-block cx-code">
+            <button class="copy-button" type="button" data-copy="code-install" aria-label="Copy">
+              <span class="copy-label">Copy</span>
+              <svg class="copy-check" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>
+            </button>
+<pre id="code-install"><code>pip install git+https://github.com/LiZhYun/NeurIPS2026-Cross-Skeleton-Retargeting</code></pre>
+          </div>
+          <div class="code-block cx-code">
+            <button class="copy-button" type="button" data-copy="code-score" aria-label="Copy">
+              <span class="copy-label">Copy</span>
+              <svg class="copy-check" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>
+            </button>
+<pre id="code-score"><code>from sif import score_groups
+
+<span class="cx-comment"># one group per source animal, target animal and action (format: docs/sif.md)</span>
+groups = [{"sources": [src_1, src_2, src_3], "outputs": [out_1, out_2, out_3], "block": "Horse"}]
+result = score_groups(groups)
+print(result.sif, result.ci)</code></pre>
+          </div>
+
+          <div class="cards cx-cards">
+            <a class="card" href="https://github.com/LiZhYun/NeurIPS2026-Cross-Skeleton-Retargeting/blob/main/paper/README.md" target="_blank" rel="noopener noreferrer">
+              <p class="card-title">Rebuild every table and figure in the paper</p>
+              <span class="card-link">paper/README.md</span>
+            </a>
+            <a class="card" href="https://github.com/LiZhYun/NeurIPS2026-Cross-Skeleton-Retargeting/blob/main/docs/methods.md" target="_blank" rel="noopener noreferrer">
+              <p class="card-title">Run the fourteen methods</p>
+              <span class="card-link">docs/methods.md</span>
+            </a>
+            <a class="card" href="https://github.com/LiZhYun/NeurIPS2026-Cross-Skeleton-Retargeting/blob/main/docs/robots.md" target="_blank" rel="noopener noreferrer">
+              <p class="card-title">Run the robot studies</p>
+              <span class="card-link">docs/robots.md</span>
+            </a>
+          </div>
+
+          <p class="cx-cta"><a class="pill pill-primary pill-large" href="https://github.com/LiZhYun/NeurIPS2026-Cross-Skeleton-Retargeting" target="_blank" rel="noopener noreferrer">View the code on GitHub</a></p>
+        </div>
       </div>
     </section>
 
-    <section class="band band-alt" id="cite">
-      <div class="wrap wrap-text">
-        <h2 class="section-title">How do I cite this?</h2>
-        <div class="code-block">
+    <section class="chapter chapter-alt" id="cite">
+      <div class="wrap">
+        <h2 class="chapter-title">How do I cite this?</h2>
+        <div class="code-block chapter-body">
           <button class="copy-button" type="button" data-copy="bibtex" aria-label="Copy">
             <span class="copy-label">Copy</span>
             <svg class="copy-check" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>
@@ -92,22 +558,30 @@
   </main>
 
   <footer class="footer">
-    <div class="wrap wrap-text">
-      <h2 class="footer-head">Data</h2>
-      <ul class="footer-list">
-        <li>Animal motion: Truebones Zoo dataset by Truebones.</li>
-        <li>Human motion: LAFAN1 by Ubisoft La Forge, CC BY-NC-ND 4.0</li>
-        <li>Training data includes Motion Data by Bones Studio (<a href="https://bones.studio/">https://bones.studio/</a>). Use of the underlying dataset is subject to the BONES Motion Capture Dataset License Agreement.</li>
-      </ul>
-      <h2 class="footer-head">Funding</h2>
-      <p>This work was supported by the Research Council of Finland, Flagship program Finnish Center for Artificial Intelligence (FCAI), and the Research Council of Finland (357301, 358246). We acknowledge CSC – IT Center for Science, Finland, for awarding this project access to the LUMI supercomputer, owned by the EuroHPC Joint Undertaking, hosted by CSC (Finland) and the LUMI consortium through CSC. We acknowledge the computational resources provided by the Aalto Science-IT project.</p>
-      <p>Code released under the MIT licence.</p>
+    <div class="wrap ft-wrap">
+      <div class="ft-col">
+        <h2 class="footer-head">Data</h2>
+        <ul class="footer-list">
+          <li>Animal motion: Truebones Zoo dataset by Truebones.</li>
+          <li>Human motion: LAFAN1 by Ubisoft La Forge, <span class="nowrap">CC BY-NC-ND 4.0</span></li>
+          <li>Training data includes Motion Data by Bones Studio (<a href="https://bones.studio/" target="_blank" rel="noopener noreferrer">https://bones.studio/</a>). Use of the underlying dataset is subject to the BONES Motion Capture Dataset License Agreement.</li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h2 class="footer-head">Funding</h2>
+        <p>This work was supported by the Research Council of Finland, Flagship program Finnish Center for Artificial Intelligence (FCAI), and the Research Council of Finland (357301, 358246). We acknowledge CSC – IT Center for Science, Finland, for awarding this project access to the LUMI supercomputer, owned by the EuroHPC Joint Undertaking, hosted by CSC (Finland) and the LUMI consortium through CSC. We acknowledge the computational resources provided by the Aalto Science-IT project.</p>
+      </div>
+      <p class="ft-licence">Code released under the MIT licence.</p>
     </div>
   </footer>
 
   <script src="assets/js/hero.js"></script>
+  <script src="assets/js/videos.js"></script>
+  <script src="assets/js/steps.js"></script>
+  <script src="assets/js/bars.js"></script>
   <script src="assets/js/site.js"></script>
-  <!-- PREVIEW ONLY: accent colour switcher. Remove this script tag, assets/js/accent-preview.js and the marked block at the end of site.css before going live. -->
-  <script src="assets/js/accent-preview.js"></script>
+  <script src="assets/js/training.js"></script>
+  <script src="assets/js/scores.js"></script>
+  <script src="assets/js/media.js"></script>
 </body>
 </html>

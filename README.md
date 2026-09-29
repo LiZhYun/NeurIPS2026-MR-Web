@@ -1,27 +1,15 @@
-# Cross-Skeleton Retargeting Project Page
+# Project page
 
-Static Netlify-ready project page, styled after the academic media layout of
-the AnyTop project page, for:
+Project page for **Why Cross-Skeleton Retargeting Is Non-Identifiable: Structural Limits of
+Generative Motion Models** (NeurIPS 2026). The code is at
+https://github.com/LiZhYun/NeurIPS2026-Cross-Skeleton-Retargeting.
 
-**Why Cross-Skeleton Retargeting Is Non-Identifiable: Structural Limits of Generative Motion Models**
+The page is plain HTML, CSS and JavaScript with no build step. Netlify publishes this folder as
+it is (`netlify.toml`); open `index.html` in a browser to view it locally.
 
-## Deploy
-
-Use Netlify with:
-
-- Build command: leave empty
-- Publish directory: `.`
-
-## Contents
-
-- `index.html`: project page
-- `assets/css/site.css`: responsive page styling
-- `assets/js/site.js`: lightweight video behavior
-- `assets/figures/`: selected public paper figures
-- `assets/figures/paper_rendered/`: web crops of the LaTeX-rendered main figures
-- `assets/videos/`: selected qualitative and supplementary videos
-- `assets/paper/neurips_2026.pdf`: paper PDF
-
-The anonymous code link used by the page is:
-
-https://anonymous.4open.science/r/NeurIPS2026-MR-4884/
+- `index.html`: the page
+- `assets/css/`, `assets/js/`: styles and the hand-drawn animations
+- `assets/videos/animals/`: the paper's animal comparison videos
+- `assets/videos/robots/`: the robot study videos (human motion: LAFAN1 by Ubisoft La Forge,
+  CC BY-NC-ND 4.0; robot motion made with GMR)
+- `assets/paper/`: the paper

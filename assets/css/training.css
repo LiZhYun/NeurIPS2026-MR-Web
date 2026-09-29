@@ -1,0 +1,51 @@
+/* Chapter 3 (#training): the two scroll-driven explanations drawn by training.js.
+   The SVG is drawn in screen pixels, so the sizes below are real sizes. */
+
+.tr-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-family: var(--font);
+  overflow: visible;
+}
+
+.tr-label { font-size: 15px; font-weight: 500; fill: var(--muted); }
+.tr-strong { font-weight: 600; fill: var(--text); }
+.tr-status { font-size: 15px; font-weight: 600; fill: var(--accent-text); }
+.tr-count { font-size: 17px; font-weight: 600; fill: var(--text); letter-spacing: -0.01em; }
+.tr-count-num { fill: var(--accent-text); font-variant-numeric: tabular-nums; }
+.tr-track { fill: var(--track); }
+.tr-fill { fill: var(--accent); }
+
+/* A: dot clouds and the lines between them. */
+.tr-dot-src { fill: var(--text); }
+.tr-dot-tgt { fill: var(--accent); }
+.tr-disc { fill: rgba(0, 0, 0, 0.035); }
+.tr-ghost { fill: none; stroke: #aeaeb2; stroke-width: 1.25; stroke-dasharray: 2.5 2; }
+.tr-map { stroke: #b9b9bf; stroke-width: 1.25; stroke-linecap: round; }
+.tr-turn path {
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* B: clips as wavy lines. */
+.tr-src { fill: none; stroke: var(--text); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.tr-target { fill: none; stroke: var(--accent-far); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.tr-pick { fill: none; stroke: var(--text); stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+.tr-answer { fill: none; stroke: var(--accent); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.tr-arrow path {
+  fill: none;
+  stroke: #b9b9bf;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.tr-svg.is-narrow .tr-label,
+.tr-svg.is-narrow .tr-status { font-size: 13px; }
+.tr-svg.is-narrow .tr-count { font-size: 15px; }
+.tr-svg.is-narrow .tr-answer { stroke-width: 4; }
+.tr-svg.is-narrow .tr-src { stroke-width: 2; }
