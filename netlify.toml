@@ -26,8 +26,3 @@
   for = "/assets/social.png"
   [headers.values]
     Cache-Control = "public, max-age=3600"
-
-[[headers]]
-  for = "/assets/paper/*.pdf"
-  [headers.values]
-    Cache-Control = "public, max-age=3600"
